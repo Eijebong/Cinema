@@ -35,9 +35,9 @@ class OMDBAPI:
         if not infos.get('title'):
             return
         try:
-            params = urlencode({'s': infos['title'], 'y': infos['year'], 'type': 'movie', 'r': 'json', 'apikey': settings.OMDB_API_KEY})
+            params = urlencode({'s': infos['title'] + infos.get("alternative_title", ""), 'y': infos['year'], 'type': 'movie', 'r': 'json', 'apikey': settings.OMDB_API_KEY})
         except KeyError:
-            params = urlencode({'s': infos['title'], 'type': 'movie', 'r': 'json', 'apikey': settings.OMDB_API_KEY})
+            params = urlencode({'s': infos['title'] + infos.get("alternative_title", ""), 'type': 'movie', 'r': 'json', 'apikey': settings.OMDB_API_KEY})
         url = 'http://www.omdbapi.com/?%s' % params
 
         async with self.aiohttp_session.get(url) as resp:
