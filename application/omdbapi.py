@@ -31,7 +31,7 @@ class OMDBAPI:
         self.aiohttp_session = aiohttp_session
 
     async def search(self, name):
-        infos = guessit.guessit(name)
+        infos = guessit.guessit(name, {"type": "movie"})
         if not infos.get('title'):
             return
         try:
