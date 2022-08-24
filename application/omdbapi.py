@@ -42,7 +42,6 @@ class OMDBAPI:
 
         async with self.aiohttp_session.get(url) as resp:
             data = await resp.text()
-            print(url, data)
             resp = json.loads(data)
             if "Search" in resp:
                 for res in resp['Search']:
