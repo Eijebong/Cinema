@@ -1,8 +1,9 @@
-*.sqlite3
+.*.sqlite3
 media/posters/**
 media/films/**
 media/subtitles/**
 
 __pycache__/
 venv
+.venv
 
